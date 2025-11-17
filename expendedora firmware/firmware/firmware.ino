@@ -2,20 +2,22 @@
 #include <PubSubClient.h>
 #include <Stepper.h>
 
-const int stepsPerRevolution = 200;  // ajusta según tu motor
-const int PASOS_A_PROBAR = -500;
-Stepper myStepper(stepsPerRevolution, 16, 17, 5, 18);
+//configuracion del motor paso a paso
+const int stepsPerRevolution = 200;  // ajusta las vueltas del motor gira como las agujas del reloj
+const int PASOS_A_PROBAR = -500; // vueltas del motor contrario a las ajugas del reloj
+Stepper myStepper(stepsPerRevolution, 16, 17, 5, 18); //configura los pines del motor paso a paso
 
+//comfigura el internet
 const char* SSID = "PEINE-3";
 const char* contrasenna = "etecPeine3";
 
 // crea objetos para gestionar la conexión
-const char* mqtt_server = "10.56.2.73";  // O usa la IP de tu propio servidor MQTT
-const int mqtt_port = 1883;
+const char* mqtt_server = "10.56.2.73";  // IP del servidor mqtt 
+const int mqtt_port = 1883; //puerto de mqtt
 const char* mqtt_topic = "maquina/estado";  // suscribirse a un topic
 const char* mqtt_topic_test = "maquina/probar-motor";
 
-// Pin de control de la luz (LED o relé)
+// Pin de control de la luz LED 
 const int luzPin = 2;  // GPIO2 (integrado como LED en muchos ESP32);
 
 //
@@ -41,7 +43,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     float pasos = mensaje.toFloat();
     Serial.print("Valor convertido a número: ");
     Serial.println(pasos);
-
 
     Serial.println("→ Ejecutando myStepper.step()");
     myStepper.step(pasos);
@@ -98,8 +99,7 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
-
-
+  
   Serial.println("Conectado a WiFi: ");
   Serial.println(WiFi.localIP());
   pinMode(luzPin, OUTPUT);
