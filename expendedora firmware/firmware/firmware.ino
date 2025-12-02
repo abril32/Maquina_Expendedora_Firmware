@@ -19,6 +19,8 @@ const char* mqtt_topic_test = "maquina/probar-motor";
 
 // Pin de control de la luz LED 
 const int luzPin = 2;  // GPIO2 (integrado como LED en muchos ESP32);
+const int luzRoja = 26;
+const int luzVerde = 25;
 
 //
 WiFiClient espClient;
@@ -52,9 +54,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
   else if (String(topic) == mqtt_topic) {
     if (mensaje == "ON") {
       digitalWrite(luzPin, HIGH);
+      digitalWrite(luzVerde,HIGH);
+      digitalWrite(luzRoja, LOW);
       Serial.println("Luz encendida");
     } else if (mensaje == "OFF") {
       digitalWrite(luzPin, LOW);
+      digitalWrite(luzRoja, HIGH);
+      digitalWrite(luzVerde, LOW);
       Serial.println("Luz apagada");
     } else if (mensaje == "comprar") {
       Serial.println("Girando sentido horario");
@@ -101,8 +107,11 @@ void setup() {
   }
   
   Serial.println("Conectado a WiFi: ");
-  Serial.println(WiFi.localIP());
+  Serial.println("La IP del Broker es");
+  Serial.println(mqtt_server);
   pinMode(luzPin, OUTPUT);
+  pinMode(luzRoja, OUTPUT);
+  pinMode(luzVerde, OUTPUT);
   clienteMQTT.setServer(mqtt_server, mqtt_port);
   clienteMQTT.setCallback(callback);
 }
