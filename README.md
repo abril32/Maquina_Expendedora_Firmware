@@ -57,10 +57,10 @@ Se necesita de esta biblioteca para poder conectarse a la red y así mandar los 
 Cableado
 
 Para la tira de leds
-![Circuito de los leds](/conexion_leds.png)
+![Circuito de los leds](/conexion_leds.jpg)
 
 Para el motor
-![Circuito del motor](/conexion_motor.png)
+![Circuito del motor](/conexion_motor.jpg)
 
 Video del funcionamientro
 [Ver video](/maquina.mp4)
