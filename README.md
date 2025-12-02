@@ -91,9 +91,13 @@ Para que la tira de leds funcione hay que poner en el broker un mensaje de “ON
 Referencias 
 
 https://motorba.com.ar/wp-content/uploads/como-controlar-la-velocidad-de-un-motor-con-puente-h-1.webp
+
 http://www.kio4.com/arduino/29motorpasoapaso.htm
+
 https://dronebotworkshop.com/stepper-motors-with-arduino/
+
 https://motorba.com.ar/puente-h-motor-a-pasos/
+
 https://neonledstrip.com/es/guia-completa-para-el-cableado-de-tiras-led-rgb/#Basic_Wiring_Diagram_for_RGB_LED_Strips
 
-Japan Servo Co. KH42JM2B160 Servo Motor
+Japan Servo Co. KH42JM2B160 Servo Motor //tipo de motor
